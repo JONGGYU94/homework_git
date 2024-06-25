@@ -87,7 +87,7 @@
 	</servlet-mapping>
 	
 	
-	<!-- 후원꺼 -->
+	<!-- 보드꺼 -->
 	
 	<servlet>
 		<servlet-name>boardPage</servlet-name>
