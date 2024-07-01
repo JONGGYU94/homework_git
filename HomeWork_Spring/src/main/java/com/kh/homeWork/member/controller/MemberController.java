@@ -71,7 +71,7 @@ public class MemberController {
 	
 	@RequestMapping("myPage.me")
 	public String myPage() {
-		return null;
+		return "myPage";
 	}
 	
 	@RequestMapping("insertMember.me")
@@ -91,6 +91,41 @@ public class MemberController {
 		
 		return "redirect:index.jsp";
 	}
+	
+	@RequestMapping("updateMemberPage.me")
+	public String updateMember() {
+		return "edit";
+	}
+	
+	@RequestMapping("updateMember.me")
+	public String updateMember(@ModelAttribute Member m, @RequestParam("emailId") String emailId, @RequestParam("emailDomain") String emailDomain,Model model) {
+		String email = null;
+		if(!emailId.trim().equals("")) {
+			email = emailId + "@" + emailDomain;
+		}
+		m.setEmail(email);
+		
+		
+		int result = mService.updateMember(m);
+		
+		if(result > 0) {
+			model.addAttribute("loginUser",mService.loginCheck(m)); // session에 있는 정보도 수정
+			return "redirect:myPage.me";
+		} else {
+			return "redirect:index.jsp";
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }
