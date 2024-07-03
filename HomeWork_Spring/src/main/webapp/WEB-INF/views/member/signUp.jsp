@@ -7,9 +7,7 @@
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-<!-- 카카오 주소 api -->
+
 <style>
 	body {
 		font-family: "Nanum Gothic", sans-serif;
@@ -34,6 +32,10 @@
 	    background-repeat: no-repeat;
 	    transition: background-color 0.5s ease;
 	    
+	}
+	
+	#voulnteer2 {
+		height: 200px;
 	}
 	
 	.inline-btn {
@@ -61,16 +63,17 @@
 	    <div id="top-section">
 	        <jsp:include page="../common/top.jsp" />
 	    </div>
+	    <div id="voulnteer2">
+			<jsp:include page="../common/volunteer.jsp"/>
+		</div>	
  	</div>
-	<div id="voulnteer2">
-		<jsp:include page="../common/volunteer.jsp"/>
-	</div>	
+	
 
 
 
 	
 	<div align="center" >
-		<div class="row d-flex flex-column justify-content-center mb-3 border border-5 w-50 mt-3 " align="center">
+		<div class="row d-flex flex-column justify-content-center mb-3 border border-5 w-50 mt-5 " align="center">
 	        <label style="margin:20px; margin-left:15px; font-size:48px;"><b>Home Work</b> </label>
 			<form align="left" action="${contextPath }/insertMember.me" method="post">
 		        <input class="form-control w-50 m-4" type="text" name="memberId"  required placeholder="아이디를 입력해주세요">
@@ -87,7 +90,6 @@
 		        <input class="form-control w-50 m-4" type="text" placeholder="닉네임" required name="nickName">
 		        <div class="col-12">
 		        	<label style="margin-left:25px; ">휴대폰 번호 입력</label><br>
-		        	
 		        	<input class="form-control m-4 mt-1 mb-1" style="width:75px; display:inline-block;" type="text" name="phone" value="010" readonly >-
 		        	<input class="form-control m-3 mt-1 mb-1" style="width:75px; display:inline-block;" type="text" name="phone" maxlength="4" placeholder="0000">-
 		        	<input class="form-control m-3 mt-1 mb-1" style="width:75px; display:inline-block;" type="text" name="phone" maxlength="4" placeholder="9999">

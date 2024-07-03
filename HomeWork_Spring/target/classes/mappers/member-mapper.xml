@@ -25,10 +25,19 @@
 	        #{memberName}
 		
 		)
-		
-	
 	</insert>
-	
+
+	<update id="updateMember">
+		update member
+		set	nickname = #{nickName},
+			email = #{email},
+			gender = #{gender},
+			age = #{age},
+			phone=#{phone},
+			address = #{address}
+		where member_id = #{memberId}
+	</update>
+
 	<select id="selectId" resultType="String">
 		select member_id
 		from member
@@ -47,5 +56,6 @@
 	</update>
 	
 	
+
 	
 </mapper>
