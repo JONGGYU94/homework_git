@@ -96,7 +96,7 @@
 	            		<td style="background:#E3E3E3;width:120px">모집인원</td>
 	            		<td>${v.memberCount }</td>
 	            		<td style="background:#E3E3E3;width:120px">신청인원</td>
-	            		<td>20</td>
+	            		<td>${b.nowCount }</td>
 	            	</tr>
 	            	<tr>
 	            		<td style="background:#E3E3E3;width:120px">담당자</td>

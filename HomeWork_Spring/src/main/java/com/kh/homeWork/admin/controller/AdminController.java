@@ -536,7 +536,7 @@ public class AdminController {
 							    ) {
 	    
 		int listCount = aService.getListCountVolunteerY();
-		PageInfo pi = Pagination.getPageInfo(page, listCount, 5);
+		PageInfo pi = Pagination.getPageInfo(page, listCount, 23);
 		
 		System.out.println(pi);
 		
