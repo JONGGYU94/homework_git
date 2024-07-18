@@ -76,8 +76,7 @@
 								<tr class="pb-3">
 									<th width="10%">글 번호</th>
 									<th width="10%">게시글타입</th>
-									<th width="30%">글 제목</th>
-									<th width="10%">작성자</th>
+									<th width="40%">글 제목</th>
 									<th width="20%">작성일자</th>
 									<th width="10%">조회수</th>
 			          			</tr>
@@ -88,7 +87,6 @@
 			            			<td>${b.boardNo }</td>
 			            			<td>${b.location }</td>
 			            			<td>${b.title }</td>
-			            			<td>관리자</td>
 			            			<td>${b.updateDate }</td>
 			            			<td>${b.boardCount }</td>
 			          			</tr>

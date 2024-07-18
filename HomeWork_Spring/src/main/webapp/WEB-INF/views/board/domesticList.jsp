@@ -171,12 +171,12 @@
 	                    <area shape="rect" coords="187,82,231,97" alt="강원도" data-region="강원도" onclick="showTarget(event)"/>
 	                    <area shape="rect" coords="123,168,168,184" alt="충청도" data-region="충청도" onclick="showTarget(event)"/>
 	                    <area shape="rect" coords="111,270,155,286" alt="전라도" data-region="전라도" onclick="showTarget(event)"/>
-	                    <area shape="rect" coords="205,183,250,198" alt="경기도" data-region="경기도" onclick="showTarget(event)"/>
+	                    <area shape="rect" coords="205,183,250,198" alt="경상도" data-region="경상도" onclick="showTarget(event)"/>
 	               </map> 
 	            </div>
 	               
 	             <div class="domestic-container container text-center w-50">
-	                <div class="bd-example">
+	                <div class="bd-example" >
 	                  <table class="table table-hover">
 	                     <thead>
 	                        <tr class="pb-3">

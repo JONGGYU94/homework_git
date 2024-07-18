@@ -141,7 +141,7 @@
 					<img src="resources/image/globalMap1.png" alt="대륙 지도"  usemap="#menuMap" /> 
 					<map name="menuMap" id="menuMap"> 
 				     	<area shape="rect" coords="820,184,868,206" alt="아시아" data-region="아시아" onclick="showTarget(event)"/>
-				     	<area shape="rect" coords="592,324,660,348" alt="아프리카" data-region="아메리카" onclick="showTarget(event)"/>
+				     	<area shape="rect" coords="592,324,660,348" alt="아프리카" data-region="아프리카" onclick="showTarget(event)"/>
 				     	<area shape="rect" coords="223,184,305,235" alt="북아메리카" data-region="북아메리카" onclick="showTarget(event)"/>
 				     	<area shape="rect" coords="355,375,435,427" alt="남아메리카" data-region="남아메리카" onclick="showTarget(event)"/>
 				     	<area shape="rect" coords="901,430,999,452" alt="오세아니아" data-region="오세아니아" onclick="showTarget(event)"/>
