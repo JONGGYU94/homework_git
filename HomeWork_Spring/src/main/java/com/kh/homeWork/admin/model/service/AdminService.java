@@ -103,6 +103,8 @@ public interface AdminService {
 
 	int getVolunteerCount(int vNum);
 
+	VolunteerDetail selectVolunteerDetail(int boardNo);
+
 	
 
 

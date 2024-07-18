@@ -216,9 +216,35 @@ public class AdminController {
 		PageInfo pi = Pagination.getPageInfo(currentPage, listCount, 10);		
 		ArrayList<Board> list = aService.selectBoardList(pi,boardTypeNum);
 		
-			model.addAttribute("list",list);
-			model.addAttribute("pi",pi);
+		
+		for (Board b : list) {
+			if(b.getBoardType()!=3) {
+				VolunteerDetail vd = aService.selectVolunteerDetail(b.getBoardNo());
+				if(vd !=null) {
+			
+					int vNum = vd.getVolunteerNo();
+					int nowCount = aService.getVolunteerCount(vNum);
+					b.setRecruitStart(vd.getRecruitStart());
+					b.setRecruitEnd(vd.getRecruitEnd());	//리스트에 vd의 모집기간 가져옴
+					
+					b.setFullCount(vd.getMemberCount()); //리스트에 vd의 모집인원 가져옴
+					b.setNowCount(nowCount);
+					
+					b.setDateCheckEnd(LocalDate.now().isAfter(vd.getRecruitEnd().toLocalDate()));
+					b.setDateCheckStart(LocalDate.now().isAfter(vd.getRecruitStart().toLocalDate()));
+			
+				}	
+			
+			}
+		}
+		
+		if (list != null) {
+			model.addAttribute("list", list);
+			model.addAttribute("pi", pi);
 			return viewName;
+		} else {
+			throw new BoardException("게시글 조회에 실패하였습니다");
+		}
 	}
 	
 	@RequestMapping("adminSelectBoard.ad")
@@ -434,7 +460,7 @@ public class AdminController {
 	
 	@RequestMapping("adminStatistics.ad")
 	@ResponseBody
-	public void adminPayList(HttpServletResponse response ) {
+	public void adminStatistics(HttpServletResponse response ) {
 		
 		int totalMember = aService.totalMember();
 		int activeMember = aService.activeMember();

@@ -98,7 +98,7 @@
 		            			<td>${b.boardNo }</td>
 		            			<td>${b.location }</td>
 		            			<td>${b.title }</td>
-		            			<td>20</td>
+		            			<td>${b.fullCount }</td>
 		            			<td>${b.updateDate }</td>
 		            			<td>${b.boardCount }</td>
 		          			</tr>
