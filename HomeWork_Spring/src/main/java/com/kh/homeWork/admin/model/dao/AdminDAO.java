@@ -225,6 +225,10 @@ public class AdminDAO {
 		return sqlSession.selectOne("adminGetVolunteerCount", vNum);
 	}
 
+	public VolunteerDetail selectVolunteerDetail(SqlSessionTemplate sqlSession, int boardNo) {
+		return sqlSession.selectOne("boardMapper.selectVolunteerDetail",boardNo);
+	}
+
 	
 
 	

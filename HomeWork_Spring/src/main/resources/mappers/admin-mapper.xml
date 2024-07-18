@@ -385,4 +385,10 @@
 		JOIN volunteer_detail vd ON v.volunteer_no = vd.volunteer_no
 		WHERE vd.volunteer_no = #{vNum} AND v.status IN ('W', 'Y')
  	</select>
+ 	
+ 	<select id="selectVolunteerDetail" resultType="VolunteerDetail">
+ 		select *
+ 		from volunteer_Detail
+ 		where board_no = #{boardNo}
+ 	</select>
 </mapper>
