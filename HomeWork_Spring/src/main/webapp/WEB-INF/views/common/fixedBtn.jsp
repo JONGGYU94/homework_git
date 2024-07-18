@@ -15,8 +15,8 @@
 		  background:skyblue;
 		  border-radius: 50%;
 		  position: fixed; /* 추가 */
-		  bottom: 300px; /* 페이지 하단으로부터 20px */
-		  right: 100px; /* 페이지 오른쪽으로부터 20px */
+		  bottom: 150px; /* 페이지 하단으로부터 20px */
+		  right: 20px; /* 페이지 오른쪽으로부터 20px */
 		  z-index: 1000; /* 다른 요소 위에 고정 */
 	}
 	

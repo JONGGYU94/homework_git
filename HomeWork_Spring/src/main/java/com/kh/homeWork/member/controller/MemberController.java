@@ -130,7 +130,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping("updateMember.me")
-	public String updateMember(@ModelAttribute Member m,@RequestParam("id") String id, @RequestParam("emailId") String emailId, @RequestParam("emailDomain") String emailDomain,@RequestParam("phone") String phone,Model model) {
+	public String updateMember(@ModelAttribute Member m,@RequestParam("id") String id, @RequestParam("emailId") String emailId, @RequestParam("emailDomain") String emailDomain,@RequestParam("phone") String phone,Model model,HttpSession session) {
 		String email = null;
 		if(!emailId.trim().equals("")) {
 			email = emailId + "@" + emailDomain;
@@ -142,7 +142,8 @@ public class MemberController {
 		int result = mService.updateMember(m);
 		
 		if(result > 0) {
-			model.addAttribute("loginUser",mService.loginCheck(m)); // session에 있는 정보도 수정
+			//model.addAttribute("loginUser",mService.loginCheck(m)); // session에 있는 정보도 수정
+			session.setAttribute("loginUser", mService.loginCheck(m));
 			return "redirect:myPage.me";
 		} else {
 			throw new MemberException("정보수정을 실패했습니다.");
@@ -170,7 +171,7 @@ public class MemberController {
 			System.out.println(result);
 			if(result >0) {
 				model.addAttribute("loginUser",mService.loginCheck(m));
-				return "redirect:index.jsp";
+				return "redirect:home.do";
 			}else {
 				throw new MemberException("비밀번호 수정을 실패했습니다.");
 			}

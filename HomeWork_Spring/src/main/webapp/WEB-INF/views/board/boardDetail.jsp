@@ -150,7 +150,7 @@
 				
 				
 				<div class="d-flex justify-content-center align-items-center vh-30 row-gap-3" >
-		        	<c:if test="${loginUser.status =='Y' }">
+		        	<c:if test="${loginUser.isAdmin =='Y' }">
 		        		<form method="post" action="editBoard.bo" id="updateForm">
 							<input type="hidden" name="bId" value="${b.boardNo }">
 							<input type="hidden" name="page" value="${page }">
@@ -204,7 +204,7 @@
 										'<td width="150px"><b>'+ r.nickName + '</b></td>'+
 										'<td style="width:60%; font-size:12px; padding-top:15px">'+r.updateDate+'</td>'+
 										'<td width="150px"></td>'+
-										check+
+										'<td width="100px">' + check+'</td>'+
 									'</tr>'+
 									'<tr style="border-bottom: 1px solid #E3E3E3;">'+
 										'<td colspan="3">'+r.content+'</td>'+
