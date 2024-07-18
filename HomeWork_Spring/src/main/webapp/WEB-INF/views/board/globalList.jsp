@@ -152,7 +152,7 @@
 				    <div class="title-wrapper" style="margin-left:-100px;">
 				        <button type="button" class="domestic-btn border border-1 mt-5 mb-n5 p-2" onclick="location.href='${contextPath}/global.bo'">전체 보기</button>
 					    <input type="checkbox" name="checkApply" class="border border-1 ml-n3 ms-2 mt-5 mb-n3" <c:if test="${checkApply}">checked</c:if> id="btncheck1" autocomplete="off">
-				        <label style="width:200px"class="border-1 ms-1 mt-5 mb-n3"for="btncheck1">신청가능만</label>
+				        <label style="width:200px"class="border-1 ms-1 mt-5 mb-n3"for="btncheck1">신청가능날</label>
 				        <span id="region-title" style="width:350px">해외 전체</span>
 				    </div>
 				</div>
@@ -185,7 +185,7 @@
 		                                 		<td><a class="btn btn-success" href="${ contextPath }/insertVolunteer.vo?boardNo=${b.boardNo}">신청하기</a></td>
 		                                	</c:if>
 		                                 	<c:if test="${b.nowCount >= b.fullCount }">
-		                                 		<td><button class="btn btn-secondary" >신청마감</button></td>
+		                                 		<td><button class="btn btn-secondary" >마감</button></td>
 		                                 	</c:if>
 	                                 	</c:if>
 		                                 <c:if test="${b.dateCheckEnd || !b.dateCheckStart}">

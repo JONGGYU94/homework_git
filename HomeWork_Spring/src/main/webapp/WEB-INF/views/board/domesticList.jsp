@@ -162,7 +162,7 @@
 			    <div class="title-wrapper">
 			        <button type="button" class="domestic-btn border border-1 mt-5 mb-n3 p-1" onclick="location.href='${contextPath}/domestic.bo'">전체 보기</button>
 			        <input type="checkbox" name="checkApply" class="border border-1 ms-2 ml-n3 mt-5 mb-n3" <c:if test="${checkApply}">checked</c:if> id="btncheck1" autocomplete="off">
-			        <label style="width:200px"class="accept border-1mt-5 ms-1 mt-5 mb-n3"for="btncheck1">신청가능만</label>
+			        <label style="width:200px"class="accept border-1mt-5 ms-1 mt-5 mb-n3"for="btncheck1">신청가능날</label>
 			        <span id="region-title" style="width:350px">국내 전체</span>
 			    </div>
 			    
@@ -209,7 +209,7 @@
 		                                 	<td><a class="btn btn-success" href="${ contextPath }/insertVolunteer.vo?boardNo=${b.boardNo}">신청하기</a></td>
 		                                 </c:if>
 		                                 <c:if test="${b.nowCount >= b.fullCount }">
-		                                 	<td><button class="btn btn-secondary" >신청마감</button></td>
+		                                 	<td><button class="btn btn-secondary" >마감</button></td>
 		                                 </c:if>
 	                                 </c:if>
 	                                 <c:if test="${b.dateCheckEnd || !b.dateCheckStart}">
@@ -236,6 +236,7 @@
 						            <c:forEach begin="${pi.startPage }" end="${pi.endPage }" var="p">
 						            	<c:url var="goNum" value="${ loc }">
 						            		<c:param name="page" value="${ p }"/>
+						            		<c:param name="checkApply" value="${ checkApply }"/>
 						            	</c:url>
 						            	<li class="page-item ${p == pi.currentPage ? 'active' : '' }"><a class="page-link" href="${ goNum }">${ p }</a></li>		            	
 						            </c:forEach>
