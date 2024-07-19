@@ -207,19 +207,19 @@ public class MemberController {
 		return "findPwd";
 	}
 	
-	private final char[] randomString = new char[]{
+	private final char[] RANDOMSTRING = new char[]{
 		    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
 		    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
 		    'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
 		};
 
-	public String RandomPassword(int size) {
+	public String randomPassword(int size) {
 	    StringBuilder sb = new StringBuilder();
 	    Random rnd = new Random(new Date().getTime());
-	    int len = randomString.length;
+	    int len = RANDOMSTRING.length;
 	    
 	    for (int i = 0; i < size; i++) {
-	        sb.append(randomString[rnd.nextInt(len)]);
+	        sb.append(RANDOMSTRING[rnd.nextInt(len)]);
 	    }
 
 	    return sb.toString();
@@ -248,7 +248,7 @@ public class MemberController {
 	        map.put("findEmail", findEmail);
 	        map.put("findPhone", findPhone);
 
-	        String temp = RandomPassword(10);    // 임시 비밀번호 생성
+	        String temp = randomPassword(10);    // 임시 비밀번호 생성
 	        map.put("tempPwd", bcrypt.encode(temp));
 	        int result = mService.updateTempPwd(map); // 현재 비밀번호를 임시 비밀번호로 변경
 	        

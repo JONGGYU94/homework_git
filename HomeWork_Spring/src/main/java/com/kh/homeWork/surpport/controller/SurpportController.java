@@ -26,7 +26,7 @@ import com.kh.homeWork.surpport.model.service.PayService;
 import com.kh.homeWork.surpport.model.vo.Pay;
 
 @Controller
-public class surpportController {
+public class SurpportController {
 	
 	@Autowired
 	private PayService pService;

@@ -128,7 +128,7 @@ public class BoardController {
 	}
 
 	@RequestMapping("volunteer.bo")
-	public String test() {
+	public String domesticList() {
 		return "domesticList";
 	}
 
@@ -190,10 +190,10 @@ public class BoardController {
 		return "writeBoard";
 	}
 
-	@RequestMapping("testWriteBoard.bo")
-	public String testWriteBoard() {
-		return "testWriteBoard";
-	}
+	/*
+	 * @RequestMapping("testWriteBoard.bo") public String testWriteBoard() { return
+	 * "testWriteBoard"; }
+	 */
 
 	@RequestMapping("insertBoard.bo")
 	public String insertBoard(@ModelAttribute Board b, @ModelAttribute VolunteerDetail v) {
@@ -277,11 +277,11 @@ public class BoardController {
 		throw new BoardException("게시글 삭제에 실패하였습니다");
 	}
 
-	@RequestMapping("test.bo")
-	public String test2(@RequestParam("startTime") String st, @RequestParam("endTime") String et) {
-		return "redirect:domesticList.bo";
-
-	}
+//	@RequestMapping("test.bo")
+//	public String test2(@RequestParam("startTime") String st, @RequestParam("endTime") String et) {
+//		return "redirect:domesticList.bo";
+//
+//	}
 
 	@RequestMapping("regionBoardList.bo")
 	public void regionBoardList(HttpServletResponse response,
