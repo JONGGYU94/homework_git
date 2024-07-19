@@ -561,10 +561,10 @@
 		
 		
 		const form = document.getElementById('form')
-		document.getElementsByName('locationNo')[0].value = '1000';
+		
 		console.log(document.getElementsByName('locationNo')[0]);
 		function updateBoard(){
-			form.action = '${contextPath}/updateBoard.bo';
+			form.action = '${contextPath}/adminUpdateBoard.ad';
 			document.getElementsByName('content')[0].value= editDiv.innerHTML;
 			if(reviewCheck.checked){
 				document.getElementsByName('boardType')[0].value= '3';
@@ -591,7 +591,7 @@
 		});
 
 		document.getElementById('delete').addEventListener('click',()=>{
-			form.action= '${contextPath}/deleteBoard.bo';
+			form.action= '${contextPath}/adminDeleteBoard.ad';
 			form.submit();
 		});
 		

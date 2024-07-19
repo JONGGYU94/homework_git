@@ -151,7 +151,7 @@
 				<ul class="menubar hidden" style="list-style-type:none; text-align:left;">
 					<li id="volunteer1">
 						봉사대기목록
-						<button type="button" class="btn btn-danger btn-sm">
+						<button type="button" class="btn btn-danger btn-sm" id="volunteerYNBtn">
 						 	 <span class="badge rounded-pill text-bg-danger" id="volunteerApplicant"></span>
 						</button>
 					</li>
@@ -568,8 +568,6 @@
 		        const statusTdId = modal.dataset.statusTdId;
 		        const statusTd = document.getElementById(statusTdId);
 		        updateStatus(volunteerNo, memberNo, status, statusTd);
-		        console.log(statusTdId);
-		        console.log(statusTd)
 			});
 			document.getElementById('refusalModal').addEventListener('click',()=>{
 		        $('#modalRefusal').modal('hide');
@@ -1131,6 +1129,7 @@
 		            url: url,
 		            method: 'GET',
 		            success: function(data) {
+		            	
 		                if (data && data.volunteer) {
 		                    document.getElementById('volunteerList').classList.remove('hidden');
 		                    const volunteerList = document.getElementById('volunteerList');
@@ -1489,6 +1488,9 @@
 		                	statusTd.innerText = statusText(response.status);
 		                	$('#modalApprove').modal('hide');
 		                    $('#modalRefusal').modal('hide');
+		                    const volunteerApplicantElement = document.getElementById('volunteerApplicant');
+		                    const currentCount = parseInt(volunteerApplicantElement.innerText, 10);
+		                    volunteerApplicantElement.innerText = (currentCount - 1).toString();
 		            },
 		            error: function(error) {
 		                console.error('상태 업데이트 오류:', error);
