@@ -315,11 +315,11 @@ public class AdminController {
 		}
 		switch (b.getBoardType()) {
 		case 1:
-			return "redirect:domestic.bo";
+			return "redirect:admindomestic.ad";
 		case 2:
-			return "redirect:global.bo";
+			return "redirect:adminglobal.ad";
 		case 3:
-			return "redirect:review.bo";
+			return "redirect:adminreview.ad";
 		}
 		throw new AdminException("게시글 작성을 실패하였습니다");
 	}
@@ -362,9 +362,9 @@ public class AdminController {
 		}
 		if(result1>0 ) {
 			switch(b.getBoardType()) {
-			case 1: return "redirect:admindomestic.ad?page="+page;
-			case 2: return "redirect:adminglobal.ad?page="+page;
-			case 3: return "redirect:adminreview.ad?page="+page;
+			case 1: return "redirect:admindomestic.ad";
+			case 2: return "redirect:adminglobal.ad";
+			case 3: return "redirect:adminreview.ad";
 			}
 		}
 		throw new AdminException("게시글 수정에 실패하였습니다");
@@ -460,7 +460,7 @@ public class AdminController {
 	
 	@RequestMapping("adminStatistics.ad")
 	@ResponseBody
-	public void adminStatistics(HttpServletResponse response ) {
+	public void adminStatistics(HttpServletResponse response, Model model ) {
 		
 		int totalMember = aService.totalMember();
 		int activeMember = aService.activeMember();
@@ -474,6 +474,7 @@ public class AdminController {
 		int endVolunteer = aService.endVolunteer();
 		int proceedingVolunteer = totalBoard-startVolunteer-endVolunteer; 
 		
+		model.addAttribute(volunteerApplicant);
 		GsonBuilder gb = new GsonBuilder().setDateFormat("yyyy-MM-dd");
 		Gson gson = gb.create();
 		response.setContentType("application/json; charset=UTF-8");
@@ -485,8 +486,8 @@ public class AdminController {
 	    result.put("totalBoard", totalBoard);
 	    result.put("totalAmount", totalAmount);
 	    result.put("domesticAmount", domesticAmount);
-	    result.put("globalAmount", globalAmount);
 	    result.put("volunteerApplicant", volunteerApplicant);
+	    result.put("globalAmount", globalAmount);
 	    result.put("proceedingVolunteer", proceedingVolunteer);
 	    result.put("startVolunteer", startVolunteer);
 	    result.put("endVolunteer", endVolunteer);
@@ -509,16 +510,18 @@ public class AdminController {
 	    
 		int listCount = aService.getListCountVolunteer();
 		PageInfo pi = Pagination.getPageInfo(page, listCount, 5);
+		int volunteerApplicantUpdate = aService.volunteerApplicant();
 		
 		ArrayList<Volunteer> list = aService.adminVolunteerList(pi);
 		GsonBuilder gb = new GsonBuilder().setDateFormat("yyyy-MM-dd");
 		Gson gson = gb.create();
 		response.setContentType("application/json; charset=UTF-8");
-		
+
 		HashMap<String, Object> result = new HashMap<String, Object>();
 	    result.put("volunteer", list);
 	    result.put("maxPage", pi.getMaxPage()); 
 	    result.put("currentPage", pi.getCurrentPage());
+	    result.put("volunteerApplicant", volunteerApplicantUpdate);
 		try {
 			gson.toJson(result, response.getWriter());
 		} catch (JsonIOException e) {
@@ -599,6 +602,8 @@ public class AdminController {
             						   HttpServletResponse response
             						   ) {
 		HashMap<String, Object> v = new HashMap<String, Object>();
+		int volunteerApplicant = aService.volunteerApplicant();
+		
 		v.put("volunteerNo", volunteerNo);
 		v.put("memberNo", memberNo);
 		v.put("status", status);
@@ -609,9 +614,11 @@ public class AdminController {
 		Gson gson = gb.create();
 		response.setContentType("application/json; charset=UTF-8");
 		
+	
 		HashMap<String, Object> resultStatus = new HashMap<String, Object>();
 		resultStatus.put("result", result == 1? "success" : "fail");
 		resultStatus.put("status", status);
+		resultStatus.put("volunteerApplicant", volunteerApplicant-1);
 		try {
 			gson.toJson(resultStatus, response.getWriter());
 		} catch (JsonIOException e) {

@@ -172,10 +172,26 @@
         location.href = "admin.me";
     }
     
+    
     window.onload = () => {
+    	const form = document.getElementById('admimVolunteerInfo');
+        document.getElementById('editButton').addEventListener('click', () => {
+            form.action = '${contextPath}/adminBoardEdit.ad';
+            form.submit();
+        });
+    
+	    document.getElementById('deleteModal').addEventListener('click',()=>{
+			$('#modalChoice').modal('show');
+		});
+	
+		document.getElementById('delete').addEventListener('click',()=>{
+			form.action= '${contextPath}/adminBoardDelete.ad';
+			form.submit();
+		});
+	
         const replyButton = document.getElementById('replyButton');
         const replyTable = document.getElementById('replyTable');
-
+	
         function setDeleteEventListeners() {
             let replyAlters = document.querySelectorAll('td a');
 

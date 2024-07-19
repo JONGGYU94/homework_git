@@ -24,7 +24,7 @@ public class HomeController {
 	 */
 	@RequestMapping("domestic01.in")
 	public String intro1() {
-		logger.info("check");
+		
 		
 		return "domestic01";
 	}
