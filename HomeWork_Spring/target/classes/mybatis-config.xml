@@ -12,10 +12,18 @@
 
 	<typeAliases>
 		<typeAlias type="com.kh.homeWork.member.model.vo.Member" alias="Member"/>
+		<typeAlias type="com.kh.homeWork.board.model.vo.Board" alias="Board"/>
+		<typeAlias type="com.kh.homeWork.surpport.model.vo.Pay" alias="Pay"/>
+		<typeAlias type="com.kh.homeWork.board.model.vo.VolunteerDetail" alias="VolunteerDetail"/>
+		<typeAlias type="com.kh.homeWork.Volunteer.model.Volunteer" alias="Volunteer"/>
+		
+
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="mappers/member-mapper.xml"/>
 		<mapper resource="mappers/board-mapper.xml"/>
+		<mapper resource="mappers/pay-mapper.xml"/>
+		<mapper resource="mappers/volunteer-mapper.xml"/>
 	</mappers>
 </configuration>

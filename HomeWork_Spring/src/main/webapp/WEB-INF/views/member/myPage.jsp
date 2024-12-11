@@ -198,24 +198,32 @@
 	        rgba(0, 0, 0, 0.2),
 	        rgba(0, 0, 0, 0.2)
 	      )
-	      ,url('image/topImage.png');
+	      ,url('resources/image/topImage.png');
 	    background-size: cover; 
 	    background-position: center;
 	    background-repeat: no-repeat;
 	    transition: background-color 0.5s ease;
+	    
+	}
+	
+	#voulnteer2 {
+		height: 200px;
 	}
 </style>
 </head>
 <body>
+	<div id=topAndNavbar >
+ 		<div id="navbar-section2" onmouseover="changeBackground()" onmouseout="resetBackground()">
+	        <jsp:include page="../common/navbar.jsp" />
+	    </div>    
+	    <div id="top-section">
+	        <jsp:include page="../common/top.jsp" />
+	    </div>
+	    <div id="voulnteer2">
+			<jsp:include page="../common/volunteer.jsp"/>
+		</div>	
+ 	</div>
 	<div id="container">
- 		<div id=topAndNavbar >
-	 		<div id="navbar-section2" onmouseover="changeBackground()" onmouseout="resetBackground()">
-		        <jsp:include page="../common/navbar.jsp" />
-		    </div>    
-		    <div id="top-section">
-		        <jsp:include page="../common/top.jsp" />
-		    </div>
- 		</div>
  		<div align="center">
 		<ul id="categoryMypageContainer">
 			<li class=categoryMyPage><a  href="#">마이홈</a></li>
@@ -227,7 +235,7 @@
 			<div class="welcome-section">
 	            <h5><strong>김기룡</strong> 회원님 환영합니다!</h5>
 	            <div class="mdfbtn">
-	            	<a href="updateUser.me">회원정보 수정&nbsp;&nbsp;&nbsp; ></a>
+	            	<a href="updateMemberPage.me">회원정보 수정&nbsp;&nbsp;&nbsp; ></a>
 	            	<a href="https://donate.habitat.or.kr/habitat/mypage/login" onclick="gtag('event', '버튼클릭', {'event_category': '기부금영수증','event_label': 'mypage기부금영수증'});">기부금 영수증&nbsp;&nbsp;&nbsp; ></a>
 	            </div>
 	            
@@ -248,17 +256,33 @@
 	        </div>
 		</div>
 		<div class="recent-activity-section">
-            <h5>최근 활동 내역</h5>
-            <ul>
-                <li><a href="#">최근 로그인 : 2024-06-10</a></li>
-                <li><a href="#">최근 작성한 게시물 : 자원봉사 후기</a></li>
-                <li><a href="#">최근 신청한 서비스 : 집 고치기 신청</a></li>
-            </ul>
+            <h5>신청 대기 중인 봉사활동 내역</h5>
+            <table>
+        <thead>
+            <tr>
+                <th>게시글 번호</th>
+                <th>제목</th>
+                <th>상태</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach items="${recentVolunteers}" var="volunteer">
+                <tr>
+                    <td>${volunteer.boardNo}</td>
+                    <td>${volunteer.title}</td>
+                    <td>${volunteer.status}</td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
         </div>
 		
- 		<div id="footer">
- 			<jsp:include page="../common/footer.jsp"/>
- 		</div>	
+		<div id="footer">
+			<jsp:include page="../common/footer.jsp"/>
+		</div>
+		<div id="fixedBtn">
+			<jsp:include page="../common/fixedBtn.jsp"/>
+		</div>		
  	</div>
  	
  	<script>

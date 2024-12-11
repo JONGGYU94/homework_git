@@ -25,10 +25,20 @@
 	        #{memberName}
 		
 		)
-		
-	
+
 	</insert>
-	
+
+	<update id="updateMember">
+		update member
+		set	nickname = #{nickName},
+			email = #{email},
+			gender = #{gender},
+			age = #{age},
+			phone=#{phone},
+			address = #{address}
+		where member_id = #{memberId}
+	</update>
+
 	<select id="selectId" resultType="String">
 		select member_id
 		from member
@@ -45,7 +55,58 @@
 		and email = #{findEmail}
 		and phone = #{findPhone}
 	</update>
+
+	<select id="adminSelectMember" resultType="Member">
+		select *
+		from member
+	</select>
 	
+	<update id="adminDelete">
+		update member
+		set status = 'N'
+		where member_no = #{memberNo}
+	</update>
+
+	<select id="checkMemberId" resultType="_int">
+		select count(*)
+		from member
+		where member_Id = #{id} 
+	</select>
+	<select id="checkMemberNickName" resultType="_int">
+		select count(*)
+		from member
+		where nickName = #{nickName} 
+	</select>
+
+
 	
+	<update id="adminUpdate">
+		update member
+		set member_name = #{memberName},
+			nickname = #{nickName},
+			email = #{email},
+			phone = #{phone},
+			address = #{address}
+		where member_no = #{memberNo}
+	</update>
 	
+	<select id="searchMember" resultType="Member">
+		select *
+		from member
+		<if test="type=='member_No' or type=='member_name' or type=='nickName'">
+		where ${type} like '%' || #{text} || '%'
+   		</if>
+	</select>
+	
+	<update id="updateStatus">
+		update member
+		set status = #{status}
+		where member_no = #{memberNo}
+	</update>
+	
+	<update id="updateAdmin">
+		update member
+		set isAdmin = #{isAdmin}
+		where member_no = #{memberNo}
+	</update>
 </mapper>
