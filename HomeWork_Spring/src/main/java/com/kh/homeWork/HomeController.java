@@ -48,4 +48,19 @@ public class HomeController {
 		return "global01";
 	}
 	
+	@RequestMapping("global02.in")
+	public String global02() {
+		return "global02";
+	}
+	
+	@RequestMapping("global03.in")
+	public String global03() {
+		return "global03";
+	}
+	
+	@RequestMapping("home.do")
+	public String home() {
+		return "home";
+	}
+	
 }

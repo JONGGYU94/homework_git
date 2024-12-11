@@ -19,6 +19,11 @@ public class MemberDAO {
 		return sqlSession.insert("memberMapper.insertMember",m);
 	}
 
+
+	public int updateMember(SqlSessionTemplate sqlSession, Member m) {
+		return sqlSession.update("memberMapper.updateMember",m);
+	}
+
 	public String selectId(SqlSessionTemplate sqlSession, HashMap<String, String> map) {
 		return sqlSession.selectOne("memberMapper.selectId", map);
 	}
@@ -39,7 +44,7 @@ public class MemberDAO {
 		return sqlSession.update("memberMapper.adminUpdate", m);
 	}
 
-	public ArrayList<Member> searchMember(SqlSessionTemplate sqlSession, HashMap<String, String> map) {
+	public ArrayList<Member> searchMember(SqlSessionTemplate sqlSession, HashMap<String, Object> map) {
 		return (ArrayList)sqlSession.selectList("memberMapper.searchMember", map);
 	}
 
@@ -50,6 +55,15 @@ public class MemberDAO {
 	public int updateAdmin(SqlSessionTemplate sqlSession, Member m) {
 		return sqlSession.update("memberMapper.updateAdmin", m);
 	}
+
+	public int checkMemberId(SqlSessionTemplate sqlSession, String id) {
+		return sqlSession.selectOne("memberMapper.checkMemberId",id);
+	}
+
+	public int checkMemberNickName(SqlSessionTemplate sqlSession, String nickName) {
+		return sqlSession.selectOne("memberMapper.checkMemberNickName",nickName);
+	}
+
 
 
 
